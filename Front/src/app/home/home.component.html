@@ -1,0 +1,54 @@
+
+
+<div class="grid-container" [formGroup]="profileForm">
+    <h2 style="display: flex; justify-self: center;">Spider Service</h2>
+    <div class="data-block">
+        <mat-form-field>
+            <mat-label>Start Url</mat-label>
+            <input matInput type="url" placeholder="Enter start URL for crawling" formControlName="startUrl" required>
+        </mat-form-field>
+    </div>
+
+    <div class="data-block">
+        <mat-form-field>
+            <mat-label>Max Depth</mat-label>
+            <input (keypress)="keyPress($event)" matInput type="text" placeholder="Enter max depth" formControlName="maxDepth" required>
+        </mat-form-field>
+    </div>
+
+    <div class="data-block">
+        <mat-form-field>
+            <mat-label>Max Pages</mat-label>
+            <input (keypress)="keyPress($event)" matInput type="text" placeholder="Enter max pages for crawling" formControlName="maxPages" required>
+        </mat-form-field>
+    </div>
+
+    <div style="justify-self: center;">
+        <button mat-raised-button color="primary" [disabled]="profileForm.status === 'INVALID'" (click)="onSend()">Crawl</button>
+    </div>
+
+</div>
+
+
+<div *ngIf="!loaderFlag; else elseBlock" class="grid-cards">
+<mat-card *ngFor="let crawledRes of resArr" class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{ crawledRes.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p style="overflow: auto;"> URL: {{ crawledRes.url }}</p>
+        <b> Depth: {{ crawledRes.depth }}</b>
+        <br>
+        <b> Links: </b>
+        <p style="overflow: auto; max-height: 100px;">{{ crawledRes.links }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+<ng-template #elseBlock>
+    <div class="spinner">
+    <mat-spinner></mat-spinner>
+</div>
+</ng-template>
+

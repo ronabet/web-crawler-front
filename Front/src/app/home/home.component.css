@@ -1,0 +1,45 @@
+mat-button-toggle-group {
+    margin-left: 12px;
+}
+
+.grid-container{
+    display: grid;
+    
+}
+
+.data-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: assistant;
+}
+
+.example-card {
+    max-width: 400px;
+}
+  
+.example-header-image {
+    background-size: cover;
+}
+
+.grid-cards{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;;
+    grid-gap: 20px;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.spinner{
+    display: flex;
+    justify-content: center;
+    margin-top: 165px;
+}
+
+  
+
+
+
+
+
